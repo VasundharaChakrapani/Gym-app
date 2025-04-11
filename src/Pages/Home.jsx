@@ -31,7 +31,7 @@ export default function Home() {
         <div className="home-buttons">
           <button onClick={() => navigate('/workouts')}>🏋️ Start Workout</button>
           <button onClick={() => navigate('/schedule')}>📅 View Schedule</button>
-          <button onClick={handleLogout}>🚪 Logout</button>
+          <button onClick={() => navigate('/diet')}>🚪 Diet Plan</button>
         </div>
       </div>
     </div>

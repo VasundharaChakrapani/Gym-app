@@ -5,7 +5,7 @@ import Navbar from './components/Navbar';
 import Home from './Pages/Home';
 import Workouts from './Pages/Workouts';
 import Schedule from './Pages/Schedule';
-import Profile from './Pages/Profile';
+import DietPlan from './Pages/Diet';
 import Login from './Pages/Login';
 import ProtectedRoute from './Pages/ProtectedRoute';
 import './styles/App.css';
@@ -48,10 +48,10 @@ function App() {
               } 
             />
             <Route 
-              path="/profile" 
+              path="/diet" 
               element={
                 <ProtectedRoute>
-                  <Profile />
+                  <DietPlan />
                 </ProtectedRoute>
               } 
             />

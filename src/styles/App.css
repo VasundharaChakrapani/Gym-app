@@ -10,6 +10,10 @@ body {
 
 .main-content {
   padding: 20px;
+ 
+}
+.login-container{
+
 }
 
 .page {
@@ -21,6 +25,7 @@ body {
 .navbar {
   background-color: rgba(256,256,256,0.0);
   padding: 16px 24px;
+  margin-bottom: 70px;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -41,4 +46,27 @@ body {
 .links a:hover {
   color: #3498db;
 }
+.workouts-page,.home-container,.schedule-container {
 
+  padding: 20px;
+  margin-top: 50px;
+  border: none;
+}
+.home-wrapper{
+  margin-top: 50px;
+}
+.dietplan{
+  margin: 20px;
+  margin-top: 50px;
+}
+.schedule-table{
+  border: 0px;
+  border-color: rgba(256,256,256,0.0);
+}
+table{
+  border: none;
+}
+.login-container,.login-form{
+  background: rgba(256,256,256,0.0);
+  border: none;
+}
