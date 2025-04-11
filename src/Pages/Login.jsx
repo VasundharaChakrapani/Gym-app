@@ -1,40 +1,43 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { signInWithEmailAndPassword } from 'firebase/auth';
+import { auth } from '../firebase';
 import './Login.css';
 
 export default function Login() {
-  const [username, setUsername] = useState('');
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
   const navigate = useNavigate();
 
-  useEffect(() => {
-    // If already logged in, go directly to home
-    const storedUser = localStorage.getItem('username');
-    if (storedUser) {
-      navigate('/home');
-    }
-  }, [navigate]);
-
-  const handleLogin = (e) => {
+  const handleLogin = async (e) => {
     e.preventDefault();
-    if (username.trim() !== '') {
-      localStorage.setItem('username', username); // ✅ Save to localStorage
+    try {
+      await signInWithEmailAndPassword(auth, email, password);
+      localStorage.setItem('isLoggedIn', 'true');
+      localStorage.setItem('username', email.split('@')[0]);
       navigate('/home');
-    } else {
-      alert('Please enter your name to continue.');
+    } catch (error) {
+      alert('Login failed. Please check your credentials.');
     }
   };
 
   return (
     <div className="login-container">
-      <h1 className="login-heading">Welcome to FitTrack</h1>
+      <h1 className="login-heading">Login to FitTrack</h1>
       <form onSubmit={handleLogin} className="login-form">
-        <label htmlFor="username">Enter your name:</label>
+        <label>Email:</label>
         <input
-          type="text"
-          id="username"
-          value={username}
-          onChange={(e) => setUsername(e.target.value)}
-          placeholder="Your name"
+          type="email"
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
+          required
+        />
+        <label>Password:</label>
+        <input
+          type="password"
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
+          required
         />
         <button type="submit">Login</button>
       </form>

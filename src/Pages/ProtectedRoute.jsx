@@ -1,12 +1,10 @@
+// src/Pages/ProtectedRoute.jsx
 import React from 'react';
 import { Navigate } from 'react-router-dom';
 
-export default function ProtectedRoute({ children }) {
-  const username = localStorage.getItem('username');
+const ProtectedRoute = ({ children }) => {
+  const isLoggedIn = localStorage.getItem('isLoggedIn');
+  return isLoggedIn ? children : <Navigate to="/login" />;
+};
 
-  if (!username) {
-    return <Navigate to="/" replace />;
-  }
-
-  return children;
-}
+export default ProtectedRoute;
